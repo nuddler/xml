@@ -20,7 +20,7 @@ public class Main {
 		System.out.println(hurtownia.toString());
 		Zamowienie zamowienie=new Zamowienie();
 		zamowienie.setLiczbaSztuk(50);
-		hurtownia.dodajZamowienie(zamowienie);
+		//hurtownia.dodajZamowienie(zamowienie);
 		System.out.println(hurtownia);
 		Marshaller jaxbMarshaller=jaxbContext.createMarshaller();
 		jaxbMarshaller.marshal( hurtownia, new File( "src/wygenerowany.xml" ) );

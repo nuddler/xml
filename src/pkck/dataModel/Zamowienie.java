@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Zamowienie {
 
-	@XmlAttribute(name = "id_zam�wienia")
+	@XmlAttribute(name = "id_zamówienia")
 	private String idZamowienia;
 
 	@XmlAttribute(name = "towar")

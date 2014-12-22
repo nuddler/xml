@@ -10,11 +10,11 @@ import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 
-@XmlRootElement(name = "zamówienie", namespace = "http://www.pkck.com")
+@XmlRootElement(name = "zamÃ³wienie", namespace = "http://www.pkck.com")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Zamowienie {
 
-	@XmlAttribute(name = "id_zamówienia")
+	@XmlAttribute(name = "id_zamï¿½wienia")
 	private String idZamowienia;
 
 	@XmlAttribute(name = "towar")
@@ -28,10 +28,10 @@ public class Zamowienie {
 	@XmlElement(name = "liczba_sztuk", namespace = "http://www.pkck.com")
 	private int liczbaSztuk;
 
-	@XmlElement(name = "data_z³o¿enia", namespace = "http://www.pkck.com")
+	@XmlElement(name = "data_zÅ‚oÅ¼enia", namespace = "http://www.pkck.com")
 	private Date dataZlozenia;
 
-	@XmlElement(name = "p³atnoœæ", namespace = "http://www.pkck.com")
+	@XmlElement(name = "pÅ‚atnoÅ›Ä‡", namespace = "http://www.pkck.com")
 	private Platnosc platnosc;
 
 	public Zamowienie() {
@@ -87,7 +87,7 @@ public class Zamowienie {
 
 	@Override
 	public String toString() {
-		return "Zamówienie [idZamowienia=" + idZamowienia + ", towar=" + towar
+		return "Zamowienie [idZamowienia=" + idZamowienia + ", towar=" + towar
 				+ ", klient=" + klient + ", liczbaSztuk=" + liczbaSztuk
 				+ ", dataZlozenia=" + dataZlozenia + ", platnosc=" + platnosc
 				+ "]";

@@ -32,7 +32,7 @@ public class Hurtownia {
 	@Override
 	public String toString() {
 		return "Hurtownia [autorzy=" + autorzy + ", dzialy=" + dzialy
-				+ ", towary=" + towary + ", zamówienia=" + zamowienia + "]";
+				+ ", towary=" + towary + ", zamowienia=" + zamowienia + "]";
 	}
 	
 	public void dodajZamowienie(Zamowienie zamowienie){

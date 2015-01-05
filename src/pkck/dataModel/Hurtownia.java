@@ -122,4 +122,35 @@ public class Hurtownia {
 		return tablica;
 
 	}
+	
+	/**
+	 * Zwraca dział jak znalazł o takiej nazwi, inaczej null;
+	 * 
+	 * @param dzial
+	 * @return
+	 */
+	public Dzial zwrocDzial(String dzial) {
+
+		for (Dzial dzialC : dzialy) {
+			if (dzialC.getNazwaDzialu().equals(dzial)) {
+				return dzialC;
+			}
+		}
+		return null;
+
+	}
+
+	/**
+	 * Zwraca towar jak znalazł o takiej nazwie, inaczej null;
+	 * @param towar
+	 * @return
+	 */
+	public Towar zwrocTowar(String towar) {
+		for (Towar towarC : towary) {
+			if (towarC.getNazwaTowaru().equals(towar)) {
+				return towarC;
+			}
+		}
+		return null;
+	}
 }

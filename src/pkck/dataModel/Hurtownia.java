@@ -46,4 +46,111 @@ public class Hurtownia {
 	public void dodajDzial(Dzial dzial){
 		dzialy.add(dzial);
 	}
+	
+	public String[][] zwrocTabliceDzialow() {
+		String[][] tablica = new String[dzialy.size()][2];
+		int i = 0;
+		
+		for (Dzial dzial : dzialy) {
+			
+			tablica[i][0] = dzial.getNazwaDzialu();
+			tablica[i][1] = dzial.getOpisDzialu();
+			i++;
+
+		}
+		return tablica;
+
+	}
+	
+	public String[] zwrocTabliceNazwDzialow() {
+		String[] tablica = new String[dzialy.size()];
+		int i = 0;
+		
+		for (Dzial dzial : dzialy) {
+			
+			tablica[i] = dzial.getNazwaDzialu();
+			i++;
+
+		}
+		return tablica;
+
+	}
+	
+	public String[] zwrocTabliceNazwTowarów() {
+		String[] tablica = new String[towary.size()];
+		int i = 0;
+		
+		for (Towar towar : towary) {
+			
+			tablica[i] = towar.getNazwaTowaru();
+			i++;
+
+		}
+		return tablica;
+
+	}
+	
+	public String[][] zwrocTabliceTowarow() {
+		String[][] tablica = new String[towary.size()][4];
+		int i = 0;
+		
+		for (Towar towar : towary) {
+			tablica[i][0] = towar.getNazwaTowaru();
+			tablica[i][1] = towar.getDzial().getNazwaDzialu();
+			tablica[i][2] = towar.getCena();
+			tablica[i][3] = towar.getOpisTowaru();
+			i++;
+
+		}
+		return tablica;
+
+	}
+	
+	public String[][] zwrocTabliceZamowien() {
+		String[][] tablica = new String[zamowienia.size()][5];
+		int i = 0;
+		
+		for (Zamowienie zamowienie : zamowienia) {
+			tablica[i][0] = zamowienie.getTowar().getNazwaTowaru();
+			tablica[i][1] = zamowienie.getKlient().toString();
+			tablica[i][2] = Integer.toString(zamowienie.getLiczbaSztuk());
+			tablica[i][3] = zamowienie.getDataZlozenia().toString();
+			tablica[i][4] = zamowienie.getPlatnosc().toString();
+			i++;
+
+		}
+		return tablica;
+
+	}
+	
+	/**
+	 * Zwraca dział jak znalazł o takiej nazwi, inaczej null;
+	 * 
+	 * @param dzial
+	 * @return
+	 */
+	public Dzial zwrocDzial(String dzial) {
+
+		for (Dzial dzialC : dzialy) {
+			if (dzialC.getNazwaDzialu().equals(dzial)) {
+				return dzialC;
+			}
+		}
+		return null;
+
+	}
+
+	/**
+	 * Zwraca towar jak znalazł o takiej nazwie, inaczej null;
+	 * @param towar
+	 * @return
+	 */
+	public Towar zwrocTowar(String towar) {
+		for (Towar towarC : towary) {
+			if (towarC.getNazwaTowaru().equals(towar)) {
+				return towarC;
+			}
+		}
+		return null;
+	}
 }

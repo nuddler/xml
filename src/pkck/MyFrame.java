@@ -264,6 +264,47 @@ public class MyFrame extends JFrame  {
 		btn7.setBounds(26, 400, 167, 39);
 		getContentPane().add(btn7);
 		
+		JButton btn8 = new JButton("Edytuj  dział");
+		btn8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Edytowanie Dzialu");
+				
+				String[] nazwyDzialow = hurtownia.zwrocTabliceNazwDzialow();
+				String nazwaDzialu = (String) JOptionPane.showInputDialog(null, "Wybierz dzial który chcesz edytować",
+				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
+				        nazwyDzialow , // Array of choices
+				        nazwyDzialow[0]); // Initial choice
+				
+				String nowaNazwaDzialu = JOptionPane.showInputDialog("Nazwa działu", null);
+				String nowyOpisDzialu = JOptionPane.showInputDialog("Opis działu", null);
+				
+				Dzial dzial = new Dzial();
+				dzial.setNazwaDzialu(nowaNazwaDzialu);
+				dzial.setOpisDzialu(nowyOpisDzialu);
+				
+				
+				dzialyTable = new JTable(hurtownia.zwrocTabliceDzialow(),dzialyColumnNames);
+				dzialyPane.setViewportView(dzialyTable);
+			}
+		});
+		
+		JButton btn9 = new JButton("Edytuj towar");
+		btn9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Edycja Towaru");
+				
+				String[] nazwayTowarow = hurtownia.zwrocTabliceNazwTowarow();
+				String nazwaTowaru = (String) JOptionPane.showInputDialog(null, "Wybierz towar który chcesz edytować",
+				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
+				        nazwayTowarow , // Array of choices
+				        nazwayTowarow[0]); // Initial choice
+				
+				
+				towaryTable = new JTable(hurtownia.zwrocTabliceTowarow(), towaryColumnNames);
+				towaryPane.setViewportView(towaryTable);
+			}
+		});
+		
 		JLabel lbDziały = new JLabel("Działy");
 		lbDziały.setBounds(270, 5, 200, 50);
 		getContentPane().add(lbDziały);
@@ -311,7 +352,7 @@ public class MyFrame extends JFrame  {
 		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		Schema schema=sf.newSchema(new File("src/hurtownia.xsd"));
 		
-		hurtownia.getAutorzy().get(0).setNumerIndeksu("sadas");
+		//hurtownia.getAutorzy().get(0).setNumerIndeksu("sadas");
 		
 		JAXBContext jaxbContext = JAXBContext.newInstance(Hurtownia.class);
 		Marshaller jaxbMarshaller=jaxbContext.createMarshaller();

@@ -278,8 +278,6 @@ public class MyFrame extends JFrame  {
 		
 		
 	}
-	
-	
 
 	private Date dajData() {
 		String temp = JOptionPane.showInputDialog("Podaj date zakupu ( HH:mm:ss mm-dd-yyyy  ) : ");
@@ -305,7 +303,7 @@ public class MyFrame extends JFrame  {
 		JAXBContext jaxbContext = JAXBContext.newInstance(Hurtownia.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		jaxbUnmarshaller.setSchema(schema);
-		jaxbUnmarshaller.setEventHandler(new MyValidationEventHandler());
+		jaxbUnmarshaller.setEventHandler(new MyValidationEventHandlerInput());
 		return (Hurtownia) jaxbUnmarshaller.unmarshal(new File("src/hurtownia.xml"));
     }
 
@@ -313,10 +311,12 @@ public class MyFrame extends JFrame  {
 		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		Schema schema=sf.newSchema(new File("src/hurtownia.xsd"));
 		
+		hurtownia.getAutorzy().get(0).setNumerIndeksu("sadas");
+		
 		JAXBContext jaxbContext = JAXBContext.newInstance(Hurtownia.class);
 		Marshaller jaxbMarshaller=jaxbContext.createMarshaller();
 		jaxbMarshaller.setSchema(schema);
-		jaxbMarshaller.setEventHandler(new MyValidationEventHandler());
+		jaxbMarshaller.setEventHandler(new MyValidationEventHandlerOutput());
 		jaxbMarshaller.marshal( hurtownia, new File( "src/wygenerowany.xml" ) );
 	}
 	

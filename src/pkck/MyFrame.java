@@ -91,12 +91,7 @@ public class MyFrame extends JFrame  {
 		JButton btn1 = new JButton("Dodaj dział");
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String nazwaDzialu = JOptionPane.showInputDialog("Nazwa działu", null);
-				String opisDzialu = JOptionPane.showInputDialog("Opis działu", null);
-				
-				Dzial dzial = new Dzial();
-				dzial.setNazwaDzialu(nazwaDzialu);
-				dzial.setOpisDzialu(opisDzialu);
+				Dzial dzial = stworzDzial();
 				hurtownia.dodajDzial(dzial);
 				
 				dzialyTable = new JTable(hurtownia.zwrocTabliceDzialow(),dzialyColumnNames);
@@ -109,22 +104,7 @@ public class MyFrame extends JFrame  {
 		JButton btn2 = new JButton("Dodaj towar");
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String nazwaTowaru = JOptionPane.showInputDialog("Nazwa towaru", null);
-				String cenaTowaru = JOptionPane.showInputDialog("Cena", null);
-				String opisTowaru = JOptionPane.showInputDialog("Opis towaru", null);
-				
-				String[] tablicaNazwDzialow = hurtownia.zwrocTabliceNazwDzialow();
-				
-				String dzial = (String) JOptionPane.showInputDialog(null, "Wybierz dział",
-				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
-				        tablicaNazwDzialow, // Array of choices
-				        tablicaNazwDzialow[0]); // Initial choice
-				
-				Towar towar = new Towar();
-				towar.setCena(cenaTowaru);
-				towar.setNazwaTowaru(nazwaTowaru);
-				towar.setOpisTowaru(opisTowaru);
-				towar.setDzial(hurtownia.zwrocDzial(dzial));
+				Towar towar = stworzTowar();
 				hurtownia.dodajTowar(towar);
 				
 				towaryTable = new JTable(hurtownia.zwrocTabliceTowarow(), towaryColumnNames);
@@ -138,51 +118,7 @@ public class MyFrame extends JFrame  {
 		JButton btn3 = new JButton("Dodaj zamówienie");
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] tablicaNazwTowarow = hurtownia.zwrocTabliceNazwTowarow();
-				
-				String towar = (String) JOptionPane.showInputDialog(null, "Wybierz towar",
-						"Wybór", JOptionPane.QUESTION_MESSAGE, null, 
-						tablicaNazwTowarow, // Array of choices
-						tablicaNazwTowarow[0]); // Initial choice
-				
-				String liczbaSztuk = JOptionPane.showInputDialog("Liczba sztuk", null);
-				
-				String[] kanalWartosci = {"przelew","gotówka","karta"};
-				String[] ratyWartosci = {"tak","nie"};
-				
-				String kanalPlatnosci = (String) JOptionPane.showInputDialog(null, "Wybierz kanał płatności",
-				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
-				        kanalWartosci, // Array of choices
-				        kanalWartosci[0]); // Initial choice
-				
-				String raty = (String) JOptionPane.showInputDialog(null, "Czy sprzedarz była ratalna?",
-				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
-				        ratyWartosci, // Array of choices
-				        ratyWartosci[0]); // Initial choice
-				
-				Date data = dajData();
-			
-				String imieKlienta = JOptionPane.showInputDialog("Imie klienta", null);
-				String nazwiskoKlienta = JOptionPane.showInputDialog("Nazwisko klienta", null);
-				String telefonKlienta = JOptionPane.showInputDialog("Telefon do klienta", null);
-				
-				Zamowienie zamowienie = new Zamowienie();
-				
-				Klient klient = new Klient();
-				klient.setImieKlienta(imieKlienta);
-				klient.setNazwiskoKlienta(nazwiskoKlienta);
-				klient.setTelefon(telefonKlienta);
-				zamowienie.setKlient(klient);
-				zamowienie.setLiczbaSztuk(Integer.parseInt(liczbaSztuk));
-				
-				Platnosc platnosc = new Platnosc();
-				platnosc.setKanal(kanalPlatnosci);
-				platnosc.setRaty(raty);
-				zamowienie.setPlatnosc(platnosc);
-				
-				zamowienie.setTowar(hurtownia.zwrocTowar(towar));
-				
-				zamowienie.setDataZlozenia(data);
+				Zamowienie zamowienie = stworzZamowienie();
 				zamowienie.setIdZamowienia(hurtownia.następnyId());
 				hurtownia.dodajZamowienie(zamowienie);
 				
@@ -275,18 +211,16 @@ public class MyFrame extends JFrame  {
 				        nazwyDzialow , // Array of choices
 				        nazwyDzialow[0]); // Initial choice
 				
-				String nowaNazwaDzialu = JOptionPane.showInputDialog("Nazwa działu", null);
-				String nowyOpisDzialu = JOptionPane.showInputDialog("Opis działu", null);
-				
-				Dzial dzial = new Dzial();
-				dzial.setNazwaDzialu(nowaNazwaDzialu);
-				dzial.setOpisDzialu(nowyOpisDzialu);
+				Dzial dzial = stworzDzial();
 				
 				
 				dzialyTable = new JTable(hurtownia.zwrocTabliceDzialow(),dzialyColumnNames);
 				dzialyPane.setViewportView(dzialyTable);
 			}
 		});
+		btn8.setBounds(26, 450, 167, 39);
+		getContentPane().add(btn8);
+		
 		
 		JButton btn9 = new JButton("Edytuj towar");
 		btn9.addActionListener(new ActionListener() {
@@ -299,11 +233,35 @@ public class MyFrame extends JFrame  {
 				        nazwayTowarow , // Array of choices
 				        nazwayTowarow[0]); // Initial choice
 				
+				Towar towar = stworzTowar();
 				
 				towaryTable = new JTable(hurtownia.zwrocTabliceTowarow(), towaryColumnNames);
 				towaryPane.setViewportView(towaryTable);
 			}
 		});
+		btn9.setBounds(26, 500, 167, 39);
+		getContentPane().add(btn9);
+		
+		JButton btn10 = new JButton("Edytuj zamówienie");
+		btn6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Edycja zamówienia");
+				
+				String[] idZamowien = hurtownia.zwrocTabliceIdZamowien();
+				String idZamowienia = (String) JOptionPane.showInputDialog(null, "Wybierz zamówienie które chcesz edytować",
+				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
+				        idZamowien , // Array of choices
+				        idZamowien[0]); // Initial choice
+				int id = Integer.parseInt(idZamowienia);
+				Zamowienie zamowienie = stworzZamowienie();
+				
+				zamowieniaTable = new JTable(hurtownia.zwrocTabliceZamowien(),zamowieniaColumnNames);
+				zamowieniaPane.setViewportView(zamowieniaTable);
+			}
+		});
+		
+		btn10.setBounds(26, 550, 167, 39);
+		getContentPane().add(btn10);
 		
 		JLabel lbDziały = new JLabel("Działy");
 		lbDziały.setBounds(270, 5, 200, 50);
@@ -369,5 +327,84 @@ public class MyFrame extends JFrame  {
 
 	public void setHurtownia(Hurtownia hurtownia) {
 	    this.hurtownia = hurtownia;
+    }
+
+	private Zamowienie stworzZamowienie() {
+	    String[] tablicaNazwTowarow = hurtownia.zwrocTabliceNazwTowarow();
+	    
+	    String towar = (String) JOptionPane.showInputDialog(null, "Wybierz towar",
+	    		"Wybór", JOptionPane.QUESTION_MESSAGE, null, 
+	    		tablicaNazwTowarow, // Array of choices
+	    		tablicaNazwTowarow[0]); // Initial choice
+	    
+	    String liczbaSztuk = JOptionPane.showInputDialog("Liczba sztuk", null);
+	    
+	    String[] kanalWartosci = {"przelew","gotówka","karta"};
+	    String[] ratyWartosci = {"tak","nie"};
+	    
+	    String kanalPlatnosci = (String) JOptionPane.showInputDialog(null, "Wybierz kanał płatności",
+	            "Wybór", JOptionPane.QUESTION_MESSAGE, null,
+	            kanalWartosci, // Array of choices
+	            kanalWartosci[0]); // Initial choice
+	    
+	    String raty = (String) JOptionPane.showInputDialog(null, "Czy sprzedarz była ratalna?",
+	            "Wybór", JOptionPane.QUESTION_MESSAGE, null,
+	            ratyWartosci, // Array of choices
+	            ratyWartosci[0]); // Initial choice
+	    
+	    Date data = dajData();
+
+	    String imieKlienta = JOptionPane.showInputDialog("Imie klienta", null);
+	    String nazwiskoKlienta = JOptionPane.showInputDialog("Nazwisko klienta", null);
+	    String telefonKlienta = JOptionPane.showInputDialog("Telefon do klienta", null);
+	    
+	    Zamowienie zamowienie = new Zamowienie();
+	    
+	    Klient klient = new Klient();
+	    klient.setImieKlienta(imieKlienta);
+	    klient.setNazwiskoKlienta(nazwiskoKlienta);
+	    klient.setTelefon(telefonKlienta);
+	    zamowienie.setKlient(klient);
+	    zamowienie.setLiczbaSztuk(Integer.parseInt(liczbaSztuk));
+	    
+	    Platnosc platnosc = new Platnosc();
+	    platnosc.setKanal(kanalPlatnosci);
+	    platnosc.setRaty(raty);
+	    zamowienie.setPlatnosc(platnosc);
+	    
+	    zamowienie.setTowar(hurtownia.zwrocTowar(towar));
+	    
+	    zamowienie.setDataZlozenia(data);
+	    return zamowienie;
+    }
+
+	private Towar stworzTowar() {
+	    String nazwaTowaru = JOptionPane.showInputDialog("Nazwa towaru", null);
+	    String cenaTowaru = JOptionPane.showInputDialog("Cena", null);
+	    String opisTowaru = JOptionPane.showInputDialog("Opis towaru", null);
+	    
+	    String[] tablicaNazwDzialow = hurtownia.zwrocTabliceNazwDzialow();
+	    
+	    String dzial = (String) JOptionPane.showInputDialog(null, "Wybierz dział",
+	            "Wybór", JOptionPane.QUESTION_MESSAGE, null,
+	            tablicaNazwDzialow, // Array of choices
+	            tablicaNazwDzialow[0]); // Initial choice
+	    
+	    Towar towar = new Towar();
+	    towar.setCena(cenaTowaru);
+	    towar.setNazwaTowaru(nazwaTowaru);
+	    towar.setOpisTowaru(opisTowaru);
+	    towar.setDzial(hurtownia.zwrocDzial(dzial));
+	    return towar;
+    }
+
+	private Dzial stworzDzial() {
+	    String nazwaDzialu = JOptionPane.showInputDialog("Nazwa działu", null);
+	    String opisDzialu = JOptionPane.showInputDialog("Opis działu", null);
+	    
+	    Dzial dzial = new Dzial();
+	    dzial.setNazwaDzialu(nazwaDzialu);
+	    dzial.setOpisDzialu(opisDzialu);
+	    return dzial;
     }
 }

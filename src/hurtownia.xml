@@ -58,7 +58,7 @@
 	</pkck:towary>
 	
 	<pkck:zamówienia>
-		<pkck:zamówienie id_zamówienia="1" towar="GPS">
+		<pkck:zamówienie id_zamówienia="ddd1" towar="GPS">
 			<pkck:klient>
 				<pkck:imię_klienta>Marcin</pkck:imię_klienta>
 				<pkck:nazwisko_klienta>Trawka</pkck:nazwisko_klienta>

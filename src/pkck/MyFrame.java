@@ -43,13 +43,8 @@ public class MyFrame extends JFrame  {
 	
 
 
-<<<<<<< HEAD
-	public MyFrame() throws JAXBException {
-		super("Hurtownia");
-=======
 	public MyFrame() throws JAXBException, SAXException {
-		super("Hello World");
->>>>>>> 4c2d502d0884d350614d449bab7d5bb329f43061
+		super("Hurtownia");
 		this.setSize(1700,680);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);

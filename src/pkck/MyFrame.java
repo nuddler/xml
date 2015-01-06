@@ -133,7 +133,7 @@ public class MyFrame extends JFrame  {
 		JButton btn3 = new JButton("Dodaj zamówienie");
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] tablicaNazwTowarow = hurtownia.zwrocTabliceNazwTowarów();
+				String[] tablicaNazwTowarow = hurtownia.zwrocTabliceNazwTowarow();
 				
 				String towar = (String) JOptionPane.showInputDialog(null, "Choose now...",
 						"Wybierz towar", JOptionPane.QUESTION_MESSAGE, null, 
@@ -193,6 +193,12 @@ public class MyFrame extends JFrame  {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Usuwanie Dzialu");
 				
+				String[] nazwyDzialow = hurtownia.zwrocTabliceNazwDzialow();
+				String nazwaDzialu = (String) JOptionPane.showInputDialog(null, "Wybierz dzial który chcesz usunąć",
+				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				        nazwyDzialow , // Array of choices
+				        nazwyDzialow[0]); // Initial choice
+				
 				dzialyTable = new JTable(hurtownia.zwrocTabliceDzialow(),dzialyColumnNames);
 				dzialyPane.setViewportView(dzialyTable);
 			}
@@ -205,6 +211,12 @@ public class MyFrame extends JFrame  {
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Usuwanie Towaru");
+				
+				String[] nazwayTowarow = hurtownia.zwrocTabliceNazwTowarow();
+				String nazwaTowaru = (String) JOptionPane.showInputDialog(null, "Wybierz towar który chcesz usunąć",
+				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				        nazwayTowarow , // Array of choices
+				        nazwayTowarow[0]); // Initial choice
 				
 				towaryTable = new JTable(hurtownia.zwrocTabliceTowarow(), towaryColumnNames);
 				towaryPane.setViewportView(towaryTable);

@@ -76,7 +76,7 @@ public class Hurtownia {
 
 	}
 	
-	public String[] zwrocTabliceNazwTowarów() {
+	public String[] zwrocTabliceNazwTowarow() {
 		String[] tablica = new String[towary.size()];
 		int i = 0;
 		

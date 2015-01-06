@@ -157,7 +157,7 @@
 									<xs:sequence>
 										<xs:element name="klient" type="tns:typKlient" />
 										<xs:element name="liczba_sztuk" type="xs:integer"/>
-										<xs:element name="data_złożenia" type="xs:date" />
+										<xs:element name="data_złożenia" type="xs:dateTime" />
 										<xs:element name="płatność" type="tns:typPłatność" />
 									</xs:sequence>
 									<xs:attributeGroup ref="tns:zamówienieAtrybuty" />

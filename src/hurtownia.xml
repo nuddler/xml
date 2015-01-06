@@ -65,7 +65,7 @@
 				<pkck:telefon>333333333</pkck:telefon>
 			</pkck:klient>
 			<pkck:liczba_sztuk>1</pkck:liczba_sztuk>
-			<pkck:data_złożenia>2002-09-24</pkck:data_złożenia>
+			<pkck:data_złożenia>2002-09-24T09:00:00</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
 		<pkck:zamówienie id_zamówienia="2" towar="Tablet">
@@ -75,7 +75,7 @@
 				<pkck:telefon>222222222</pkck:telefon>
 			</pkck:klient>
 			<pkck:liczba_sztuk>1</pkck:liczba_sztuk>
-			<pkck:data_złożenia>2002-09-24</pkck:data_złożenia>
+			<pkck:data_złożenia>2002-09-24T09:00:00</pkck:data_złożenia>
 			<pkck:płatność kanał="przelew" raty="tak"/>
 		</pkck:zamówienie>
 		<pkck:zamówienie id_zamówienia="3" towar="Tablet">
@@ -85,7 +85,7 @@
 				<pkck:telefon>999999999</pkck:telefon>
 			</pkck:klient>
 			<pkck:liczba_sztuk>2</pkck:liczba_sztuk>
-			<pkck:data_złożenia>2002-09-24</pkck:data_złożenia>
+			<pkck:data_złożenia>2002-09-24T09:00:00</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
 		<pkck:zamówienie id_zamówienia="4" towar="Spinacz">
@@ -95,7 +95,7 @@
 				<pkck:telefon>111111111</pkck:telefon>
 			</pkck:klient>
 			<pkck:liczba_sztuk>100</pkck:liczba_sztuk>
-			<pkck:data_złożenia>2002-09-24</pkck:data_złożenia>
+			<pkck:data_złożenia>2002-09-24T09:00:00</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
 		<pkck:zamówienie id_zamówienia="5" towar="Spinacz">
@@ -105,7 +105,7 @@
 				<pkck:telefon>111112111</pkck:telefon>
 			</pkck:klient>
 			<pkck:liczba_sztuk>60</pkck:liczba_sztuk>
-			<pkck:data_złożenia>2002-09-21</pkck:data_złożenia>
+			<pkck:data_złożenia>2002-09-21T09:00:00</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
 		<pkck:zamówienie id_zamówienia="6" towar="Papier">
@@ -115,7 +115,7 @@
 				<pkck:telefon>111111114</pkck:telefon>
 			</pkck:klient>
 			<pkck:liczba_sztuk>40</pkck:liczba_sztuk>
-			<pkck:data_złożenia>2002-07-24</pkck:data_złożenia>
+			<pkck:data_złożenia>2002-07-24T09:00:00</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
 		<pkck:zamówienie id_zamówienia="7" towar="GPS">
@@ -125,7 +125,7 @@
 				<pkck:telefon>811111111</pkck:telefon>
 			</pkck:klient>
 			<pkck:liczba_sztuk>1</pkck:liczba_sztuk>
-			<pkck:data_złożenia>2014-09-24</pkck:data_złożenia>
+			<pkck:data_złożenia>2014-09-24T09:00:00</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
 	</pkck:zamówienia>

@@ -46,36 +46,36 @@ public class MyFrame extends JFrame  {
 		
 		hurtownia = initailizeHurtownia();
 		 
-		String[] dzialyColumnNames = {"nazwaDzialu",
+		final String[] dzialyColumnNames = {"nazwaDzialu",
                 "opisDzialu"};
 		
-		String[] towaryColumnNames = {"nazwaTowaru",
+		final String[] towaryColumnNames = {"nazwaTowaru",
                 "dzial",
                 "cena",
                 "opisTowaru"};
 		
-		String[] zamowieniaColumnNames = {"id","towar",
+		final String[] zamowieniaColumnNames = {"id","towar",
                 "klient",
                 "liczbaSztuk",
                 "dataZlozenia",
                 "platnosc"};
 		
 		
-		JScrollPane dzialyPane = new JScrollPane();
+		final JScrollPane dzialyPane = new JScrollPane();
 		dzialyPane.setBounds(270, 53, 941, 129);
 		getContentPane().add(dzialyPane);
 		
 		dzialyTable = new JTable(hurtownia.zwrocTabliceDzialow(),dzialyColumnNames);
 		dzialyPane.setViewportView(dzialyTable);
 		
-		JScrollPane towaryPane = new JScrollPane();
+		final JScrollPane towaryPane = new JScrollPane();
 		towaryPane.setBounds(270, 243, 1200, 129);
 		getContentPane().add(towaryPane);
 		
 		towaryTable = new JTable(hurtownia.zwrocTabliceTowarow(), towaryColumnNames);
 		towaryPane.setViewportView(towaryTable);
 		
-		JScrollPane zamowieniaPane = new JScrollPane();
+		final JScrollPane zamowieniaPane = new JScrollPane();
 		zamowieniaPane.setBounds(270, 437, 1200, 129);
 		getContentPane().add(zamowieniaPane);
 		

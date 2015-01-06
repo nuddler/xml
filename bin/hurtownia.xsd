@@ -70,7 +70,7 @@
 	</xs:complexType>
 
 	<xs:attributeGroup name="zamówienieAtrybuty">
-		<xs:attribute name="id_zamówienia" type="xs:string" use="required" />
+		<xs:attribute name="id_zamówienia" type="xs:integer" use="required" />
 		<xs:attribute name="towar" type="xs:string" />
 	</xs:attributeGroup>
 

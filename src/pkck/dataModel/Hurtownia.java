@@ -124,6 +124,19 @@ public class Hurtownia {
 
 	}
 	
+	public String[] zwrocTabliceIdZamowien() {
+		String[] tablica = new String[zamowienia.size()];
+		int i = 0;
+		
+		for (Zamowienie zamowienie : zamowienia) {
+			tablica[i] = Integer.toString(zamowienie.getIdZamowienia());
+			i++;
+
+		}
+		return tablica;
+
+	}
+	
 	/**
 	 * Zwraca dział jak znalazł o takiej nazwi, inaczej null;
 	 * 

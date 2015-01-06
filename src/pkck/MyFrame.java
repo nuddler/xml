@@ -218,6 +218,13 @@ public class MyFrame extends JFrame  {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Usuwanie zamówienia");
 				
+				String[] idZamowien = hurtownia.zwrocTabliceIdZamowien();
+				String idZamowienia = (String) JOptionPane.showInputDialog(null, "Wybierz zamówienie które chcesz usunąć",
+				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				        idZamowien , // Array of choices
+				        idZamowien[0]); // Initial choice
+				Integer.getInteger(idZamowienia);
+				
 				zamowieniaTable = new JTable(hurtownia.zwrocTabliceZamowien(),zamowieniaColumnNames);
 				zamowieniaPane.setViewportView(zamowieniaTable);
 			}

@@ -12,10 +12,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+
+import org.xml.sax.SAXException;
 
 import pkck.dataModel.Dzial;
 import pkck.dataModel.Hurtownia;
@@ -38,7 +43,7 @@ public class MyFrame extends JFrame  {
 	
 
 
-	public MyFrame() throws JAXBException {
+	public MyFrame() throws JAXBException, SAXException {
 		super("Hello World");
 		this.setSize(1700,680);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -250,7 +255,7 @@ public class MyFrame extends JFrame  {
 				JOptionPane.showMessageDialog(null, "Zapis");
 				try {
 	                saveHurtownia();
-                } catch (JAXBException e) {
+				} catch (JAXBException | SAXException e) {
                 	JOptionPane.showMessageDialog(null, "Problem z zapisem");
 	                e.printStackTrace();
                 }
@@ -293,15 +298,25 @@ public class MyFrame extends JFrame  {
 	        return date;
 	}
 	
-	private Hurtownia initailizeHurtownia() throws JAXBException {
+	private Hurtownia initailizeHurtownia() throws JAXBException, SAXException {
+		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		Schema schema=sf.newSchema(new File("src/hurtownia.xsd"));
+		
 		JAXBContext jaxbContext = JAXBContext.newInstance(Hurtownia.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		jaxbUnmarshaller.setSchema(schema);
+		jaxbUnmarshaller.setEventHandler(new MyValidationEventHandler());
 		return (Hurtownia) jaxbUnmarshaller.unmarshal(new File("src/hurtownia.xml"));
     }
 
-	private void saveHurtownia() throws JAXBException {
+	private void saveHurtownia() throws JAXBException, SAXException {
+		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		Schema schema=sf.newSchema(new File("src/hurtownia.xsd"));
+		
 		JAXBContext jaxbContext = JAXBContext.newInstance(Hurtownia.class);
 		Marshaller jaxbMarshaller=jaxbContext.createMarshaller();
+		jaxbMarshaller.setSchema(schema);
+		jaxbMarshaller.setEventHandler(new MyValidationEventHandler());
 		jaxbMarshaller.marshal( hurtownia, new File( "src/wygenerowany.xml" ) );
 	}
 	

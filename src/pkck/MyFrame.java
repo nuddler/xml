@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import pkck.dataModel.Dzial;
@@ -39,7 +40,7 @@ public class MyFrame extends JFrame  {
 
 	public MyFrame() throws JAXBException {
 		super("Hello World");
-		this.setSize(1300,680);
+		this.setSize(1700,680);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
@@ -53,7 +54,7 @@ public class MyFrame extends JFrame  {
                 "cena",
                 "opisTowaru"};
 		
-		String[] zamowieniaColumnNames = {"towar",
+		String[] zamowieniaColumnNames = {"id","towar",
                 "klient",
                 "liczbaSztuk",
                 "dataZlozenia",
@@ -68,14 +69,14 @@ public class MyFrame extends JFrame  {
 		dzialyPane.setViewportView(dzialyTable);
 		
 		JScrollPane towaryPane = new JScrollPane();
-		towaryPane.setBounds(270, 243, 941, 129);
+		towaryPane.setBounds(270, 243, 1200, 129);
 		getContentPane().add(towaryPane);
 		
 		towaryTable = new JTable(hurtownia.zwrocTabliceTowarow(), towaryColumnNames);
 		towaryPane.setViewportView(towaryTable);
 		
 		JScrollPane zamowieniaPane = new JScrollPane();
-		zamowieniaPane.setBounds(270, 437, 941, 129);
+		zamowieniaPane.setBounds(270, 437, 1200, 129);
 		getContentPane().add(zamowieniaPane);
 		
 		zamowieniaTable = new JTable(hurtownia.zwrocTabliceZamowien(),zamowieniaColumnNames);
@@ -141,8 +142,18 @@ public class MyFrame extends JFrame  {
 				
 				String liczbaSztuk = JOptionPane.showInputDialog("Liczba sztuk", null);
 				
-				String kanalPlatnosci = JOptionPane.showInputDialog("Płatnosć kanał", null);
-				String raty = JOptionPane.showInputDialog("Płatnosć raty", null);
+				String[] kanalWartosci = {"przelew","gotówka","karta"};
+				String[] ratyWartosci = {"tak","nie"};
+				
+				String kanalPlatnosci = (String) JOptionPane.showInputDialog(null, "Wybierz kanał płatności",
+				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				        kanalWartosci, // Array of choices
+				        kanalWartosci[0]); // Initial choice
+				
+				String raty = (String) JOptionPane.showInputDialog(null, "Czy sprzedarz była ratalna?",
+				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				        ratyWartosci, // Array of choices
+				        ratyWartosci[0]); // Initial choice
 				
 				Date data = dajData();
 			
@@ -167,7 +178,7 @@ public class MyFrame extends JFrame  {
 				zamowienie.setTowar(hurtownia.zwrocTowar(towar));
 				
 				zamowienie.setDataZlozenia(data);
-				
+				zamowienie.setIdZamowienia(hurtownia.następnyId());
 				hurtownia.dodajZamowienie(zamowienie);
 				
 				zamowieniaTable = new JTable(hurtownia.zwrocTabliceZamowien(),zamowieniaColumnNames);
@@ -214,6 +225,21 @@ public class MyFrame extends JFrame  {
 		btn6.setBounds(26, 333, 167, 39);
 		getContentPane().add(btn6);
 		
+		JButton btn7 = new JButton("Zapis");
+		btn7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Zapis");
+				try {
+	                saveHurtownia();
+                } catch (JAXBException e) {
+                	JOptionPane.showMessageDialog(null, "Problem z zapisem");
+	                e.printStackTrace();
+                }
+			}
+		});
+		btn7.setBounds(26, 400, 167, 39);
+		getContentPane().add(btn7);
+		
 		JLabel lbDziały = new JLabel("Działy");
 		lbDziały.setBounds(270, 5, 200, 50);
 		getContentPane().add(lbDziały);
@@ -225,7 +251,11 @@ public class MyFrame extends JFrame  {
 		JLabel lblZamwienia = new JLabel("Zamówienia");
 		lblZamwienia.setBounds(270, 381, 200, 50);
 		getContentPane().add(lblZamwienia);
+		
+		
 	}
+	
+	
 
 	private Date dajData() {
 		String temp = JOptionPane.showInputDialog("Podaj date zakupu ( HH:mm:ss mm-dd-yyyy  ) : ");
@@ -250,6 +280,12 @@ public class MyFrame extends JFrame  {
 		return (Hurtownia) jaxbUnmarshaller.unmarshal(new File("src/hurtownia.xml"));
     }
 
+	private void saveHurtownia() throws JAXBException {
+		JAXBContext jaxbContext = JAXBContext.newInstance(Hurtownia.class);
+		Marshaller jaxbMarshaller=jaxbContext.createMarshaller();
+		jaxbMarshaller.marshal( hurtownia, new File( "src/wygenerowany.xml" ) );
+	}
+	
 	public Hurtownia getHurtownia() {
 	    return hurtownia;
     }

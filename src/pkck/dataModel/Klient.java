@@ -41,4 +41,9 @@ public class Klient {
 		return "Klient [imieKlienta=" + imieKlienta + ", nazwiskoKlienta="
 				+ nazwiskoKlienta + ", telefon=" + telefon + "]";
 	}
+	
+	public String toTable() {
+		return "imieKlienta=" + imieKlienta + ", nazwiskoKlienta="
+				+ nazwiskoKlienta + ", telefon=" + telefon ;
+	}
 }

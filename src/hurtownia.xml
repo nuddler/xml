@@ -58,7 +58,7 @@
 	</pkck:towary>
 	
 	<pkck:zamówienia>
-		<pkck:zamówienie id_zamówienia="x1" towar="GPS">
+		<pkck:zamówienie id_zamówienia="1" towar="GPS">
 			<pkck:klient>
 				<pkck:imię_klienta>Marcin</pkck:imię_klienta>
 				<pkck:nazwisko_klienta>Trawka</pkck:nazwisko_klienta>
@@ -68,7 +68,7 @@
 			<pkck:data_złożenia>2002-09-24</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
-		<pkck:zamówienie id_zamówienia="x2" towar="Tablet">
+		<pkck:zamówienie id_zamówienia="2" towar="Tablet">
 			<pkck:klient>
 				<pkck:imię_klienta>Adam</pkck:imię_klienta>
 				<pkck:nazwisko_klienta>Sprawka</pkck:nazwisko_klienta>
@@ -78,7 +78,7 @@
 			<pkck:data_złożenia>2002-09-24</pkck:data_złożenia>
 			<pkck:płatność kanał="przelew" raty="tak"/>
 		</pkck:zamówienie>
-		<pkck:zamówienie id_zamówienia="x3" towar="Tablet">
+		<pkck:zamówienie id_zamówienia="3" towar="Tablet">
 			<pkck:klient>
 				<pkck:imię_klienta>Przemysław</pkck:imię_klienta>
 				<pkck:nazwisko_klienta>Długi</pkck:nazwisko_klienta>
@@ -88,7 +88,7 @@
 			<pkck:data_złożenia>2002-09-24</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
-		<pkck:zamówienie id_zamówienia="x4" towar="Spinacz">
+		<pkck:zamówienie id_zamówienia="4" towar="Spinacz">
 			<pkck:klient>
 				<pkck:imię_klienta>Marian</pkck:imię_klienta>
 				<pkck:nazwisko_klienta>Wojciechowski</pkck:nazwisko_klienta>
@@ -98,7 +98,7 @@
 			<pkck:data_złożenia>2002-09-24</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
-		<pkck:zamówienie id_zamówienia="x5" towar="Spinacz">
+		<pkck:zamówienie id_zamówienia="5" towar="Spinacz">
 			<pkck:klient>
 				<pkck:imię_klienta>Łukasz</pkck:imię_klienta>
 				<pkck:nazwisko_klienta>Kluchowski</pkck:nazwisko_klienta>
@@ -108,7 +108,7 @@
 			<pkck:data_złożenia>2002-09-21</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
-		<pkck:zamówienie id_zamówienia="x6" towar="Papier">
+		<pkck:zamówienie id_zamówienia="6" towar="Papier">
 			<pkck:klient>
 				<pkck:imię_klienta>Sebastian</pkck:imię_klienta>
 				<pkck:nazwisko_klienta>Kępa</pkck:nazwisko_klienta>
@@ -118,7 +118,7 @@
 			<pkck:data_złożenia>2002-07-24</pkck:data_złożenia>
 			<pkck:płatność kanał="gotówka" raty="nie"/>
 		</pkck:zamówienie>
-		<pkck:zamówienie id_zamówienia="x7" towar="GPS">
+		<pkck:zamówienie id_zamówienia="7" towar="GPS">
 			<pkck:klient>
 				<pkck:imię_klienta>Robert</pkck:imię_klienta>
 				<pkck:nazwisko_klienta>Mielczarski</pkck:nazwisko_klienta>

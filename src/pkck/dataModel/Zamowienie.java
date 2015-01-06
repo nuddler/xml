@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 public class Zamowienie {
 
 	@XmlAttribute(name = "id_zamówienia")
-	private String idZamowienia;
+	private int idZamowienia;
 
 	@XmlAttribute(name = "towar")
 	@XmlIDREF
@@ -37,11 +37,11 @@ public class Zamowienie {
 	public Zamowienie() {
 	}
 
-	public String getIdZamowienia() {
+	public int getIdZamowienia() {
 		return idZamowienia;
 	}
 
-	public void setIdZamowienia(String idZamowienia) {
+	public void setIdZamowienia(int idZamowienia) {
 		this.idZamowienia = idZamowienia;
 	}
 

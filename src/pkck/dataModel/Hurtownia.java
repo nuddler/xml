@@ -107,15 +107,16 @@ public class Hurtownia {
 	}
 	
 	public String[][] zwrocTabliceZamowien() {
-		String[][] tablica = new String[zamowienia.size()][5];
+		String[][] tablica = new String[zamowienia.size()][6];
 		int i = 0;
 		
 		for (Zamowienie zamowienie : zamowienia) {
-			tablica[i][0] = zamowienie.getTowar().getNazwaTowaru();
-			tablica[i][1] = zamowienie.getKlient().toString();
-			tablica[i][2] = Integer.toString(zamowienie.getLiczbaSztuk());
-			tablica[i][3] = zamowienie.getDataZlozenia().toString();
-			tablica[i][4] = zamowienie.getPlatnosc().toString();
+			tablica[i][0] = Integer.toString(zamowienie.getIdZamowienia());
+			tablica[i][1] = zamowienie.getTowar().getNazwaTowaru();
+			tablica[i][2] = zamowienie.getKlient().toTable();
+			tablica[i][3] = Integer.toString(zamowienie.getLiczbaSztuk());
+			tablica[i][4] = zamowienie.getDataZlozenia().toString();
+			tablica[i][5] = zamowienie.getPlatnosc().toTable();
 			i++;
 
 		}
@@ -152,5 +153,9 @@ public class Hurtownia {
 			}
 		}
 		return null;
+	}
+	public int następnyId() {
+		return zamowienia.get(zamowienia.size()-1).getIdZamowienia()+1;
+		
 	}
 }

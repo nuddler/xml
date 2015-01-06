@@ -35,5 +35,9 @@ public class Platnosc {
 	public String toString() {
 		return "Platnosc [kanal=" + kanal + ", raty=" + raty + "]";
 	}
+	
+	public String toTable() {
+		return "kanal=" + kanal + ", raty=" + raty;
+	}
 
 }

@@ -1,5 +1,6 @@
 package pkck.dataModel;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -23,7 +24,7 @@ public class Hurtownia {
 	
 	@XmlElementWrapper(name="towary", namespace="http://www.pkck.com")
     @XmlElement(name="towar", namespace="http://www.pkck.com")	
-	List<Towar> towary;
+		List<Towar> towary;
 	
 	@XmlElementWrapper(name="zamówienia", namespace="http://www.pkck.com")
     @XmlElement(name="zamówienie", namespace="http://www.pkck.com")	
@@ -170,5 +171,32 @@ public class Hurtownia {
 	public int następnyId() {
 		return zamowienia.get(zamowienia.size()-1).getIdZamowienia()+1;
 		
+	}
+	
+	public void usunZamowienie(int id){
+		for (Iterator<Zamowienie> iter = zamowienia.listIterator(); iter.hasNext(); ) {
+		    Zamowienie zamowienie = iter.next();
+		    if (zamowienie.getIdZamowienia()==id) {
+		        iter.remove();
+		    }
+		}
+	}
+	
+	public void usunTowar(String id){
+		for (Iterator<Towar> iter = towary.listIterator(); iter.hasNext(); ) {
+		    Towar towar = iter.next();
+		    if (towar.getNazwaTowaru()==id) {
+		        iter.remove();
+		    }
+		}
+	}
+	
+	public void usunDzial(String id){
+		for (Iterator<Dzial> iter = dzialy.listIterator(); iter.hasNext(); ) {
+		    Dzial dzial = iter.next();
+		    if (dzial.getNazwaDzialu()==id) {
+		        iter.remove();
+		    }
+		}	
 	}
 }

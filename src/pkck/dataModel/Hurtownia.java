@@ -231,4 +231,97 @@ public class Hurtownia {
 		    }
 		}	
 	}
+	
+	public void edytujDzial(String id, Dzial zmianaDzial){
+		Dzial nowyDzial=null;
+		for (Dzial dzial: dzialy) {
+			if (dzial.getNazwaDzialu()==id)
+				nowyDzial=dzial;
+		}
+		
+		if (!zmianaDzial.getNazwaDzialu().isEmpty())
+			nowyDzial.setNazwaDzialu(zmianaDzial.getNazwaDzialu());
+		
+		if (!zmianaDzial.getOpisDzialu().isEmpty())
+			nowyDzial.setOpisDzialu(zmianaDzial.getNazwaDzialu());
+	}
+	
+	public void edytujTowar(String id, Towar zmianaTowar){
+		Towar nowyTowar=null;
+		for (Towar towar : towary) {
+			if (towar.getNazwaTowaru()==id)
+				nowyTowar=towar;
+		}
+		
+		if (!zmianaTowar.getNazwaTowaru().isEmpty())
+			nowyTowar.setNazwaTowaru(zmianaTowar.getNazwaTowaru());
+		
+		if(!zmianaTowar.getCena().isEmpty())
+			nowyTowar.setCena(zmianaTowar.getCena());
+		
+		if (!zmianaTowar.getOpisTowaru().isEmpty())
+			nowyTowar.setOpisTowaru(zmianaTowar.getOpisTowaru());
+		
+		nowyTowar.setDzial(zmianaTowar.getDzial());
+	}
+	
+	public void edytujZamowienie(int id, Zamowienie zmianaZamowienie){
+		Zamowienie noweZamowienie=null;
+		
+		for (Zamowienie zamowienie : zamowienia) {
+			if (zamowienie.getIdZamowienia()==id)
+				noweZamowienie=zamowienie;
+		}
+		
+		Klient klient=new Klient();
+		boolean zmianaK=false;
+		
+		if (!zmianaZamowienie.getKlient().getImieKlienta().isEmpty()){
+			klient.setImieKlienta(zmianaZamowienie.getKlient().getImieKlienta());
+			zmianaK=true;
+		}
+		
+		if (!zmianaZamowienie.getKlient().getNazwiskoKlienta().isEmpty()){
+			klient.setNazwiskoKlienta(zmianaZamowienie.getKlient().getNazwiskoKlienta());
+			zmianaK=true;
+		}
+		
+		if (!zmianaZamowienie.getKlient().getTelefon().isEmpty()){
+			klient.setTelefon(zmianaZamowienie.getKlient().getTelefon());
+			zmianaK=true;
+		}
+		
+		if (zmianaK)
+			noweZamowienie.setKlient(klient);
+		
+		noweZamowienie.setDataZlozenia(zmianaZamowienie.getDataZlozenia());
+		
+		noweZamowienie.setLiczbaSztuk(zmianaZamowienie.getLiczbaSztuk());
+		
+		noweZamowienie.setPlatnosc(zmianaZamowienie.getPlatnosc());
+		
+		
+		Towar towar=new Towar();
+		boolean zmianaT=false;
+		
+		if (!zmianaZamowienie.getTowar().getCena().isEmpty()){
+			towar.setCena(zmianaZamowienie.getTowar().getCena());
+			zmianaT=true;
+		}
+		
+		if (!zmianaZamowienie.getTowar().getNazwaTowaru().isEmpty()){
+			towar.setNazwaTowaru(zmianaZamowienie.getTowar().getNazwaTowaru());
+			zmianaT=true;
+		}
+		
+		if (!zmianaZamowienie.getTowar().getOpisTowaru().isEmpty()){
+			towar.setNazwaTowaru(zmianaZamowienie.getTowar().getOpisTowaru());
+			zmianaT=true;
+		}
+		
+		if (zmianaT){
+			towar.setDzial(zmianaZamowienie.getTowar().getDzial());
+			noweZamowienie.setTowar(towar);
+		}
+	}
 }

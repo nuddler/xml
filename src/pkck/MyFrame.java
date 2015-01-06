@@ -212,10 +212,12 @@ public class MyFrame extends JFrame  {
 				        nazwyDzialow[0]); // Initial choice
 				
 				Dzial dzial = stworzDzial();
-				
+				hurtownia.edytujDzial(nazwaDzialu, dzial);
 				
 				dzialyTable = new JTable(hurtownia.zwrocTabliceDzialow(),dzialyColumnNames);
 				dzialyPane.setViewportView(dzialyTable);
+				towaryTable = new JTable(hurtownia.zwrocTabliceTowarow(), towaryColumnNames);
+				towaryPane.setViewportView(towaryTable);
 			}
 		});
 		btn8.setBounds(26, 450, 167, 39);
@@ -234,9 +236,11 @@ public class MyFrame extends JFrame  {
 				        nazwayTowarow[0]); // Initial choice
 				
 				Towar towar = stworzTowar();
-				
+				hurtownia.edytujTowar(nazwaTowaru, towar);
 				towaryTable = new JTable(hurtownia.zwrocTabliceTowarow(), towaryColumnNames);
 				towaryPane.setViewportView(towaryTable);
+				zamowieniaTable = new JTable(hurtownia.zwrocTabliceZamowien(),zamowieniaColumnNames);
+				zamowieniaPane.setViewportView(zamowieniaTable);
 			}
 		});
 		btn9.setBounds(26, 500, 167, 39);
@@ -255,6 +259,7 @@ public class MyFrame extends JFrame  {
 				int id = Integer.parseInt(idZamowienia);
 				Zamowienie zamowienie = stworzZamowienie();
 				
+				hurtownia.edytujZamowienie(id, zamowienie);
 				zamowieniaTable = new JTable(hurtownia.zwrocTabliceZamowien(),zamowieniaColumnNames);
 				zamowieniaPane.setViewportView(zamowieniaTable);
 			}

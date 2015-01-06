@@ -243,7 +243,7 @@ public class MyFrame extends JFrame  {
 		getContentPane().add(btn9);
 		
 		JButton btn10 = new JButton("Edytuj zamówienie");
-		btn6.addActionListener(new ActionListener() {
+		btn10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Edycja zamówienia");
 				

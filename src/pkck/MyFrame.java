@@ -39,7 +39,7 @@ public class MyFrame extends JFrame  {
 
 
 	public MyFrame() throws JAXBException {
-		super("Hello World");
+		super("Hurtownia");
 		this.setSize(1700,680);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -76,7 +76,7 @@ public class MyFrame extends JFrame  {
 		towaryPane.setViewportView(towaryTable);
 		
 		final JScrollPane zamowieniaPane = new JScrollPane();
-		zamowieniaPane.setBounds(270, 437, 1200, 129);
+		zamowieniaPane.setBounds(270, 437, 1400, 129);
 		getContentPane().add(zamowieniaPane);
 		
 		zamowieniaTable = new JTable(hurtownia.zwrocTabliceZamowien(),zamowieniaColumnNames);
@@ -110,8 +110,8 @@ public class MyFrame extends JFrame  {
 				
 				String[] tablicaNazwDzialow = hurtownia.zwrocTabliceNazwDzialow();
 				
-				String dzial = (String) JOptionPane.showInputDialog(null, "Choose now...",
-				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				String dzial = (String) JOptionPane.showInputDialog(null, "Wybierz dział",
+				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
 				        tablicaNazwDzialow, // Array of choices
 				        tablicaNazwDzialow[0]); // Initial choice
 				
@@ -135,8 +135,8 @@ public class MyFrame extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 				String[] tablicaNazwTowarow = hurtownia.zwrocTabliceNazwTowarow();
 				
-				String towar = (String) JOptionPane.showInputDialog(null, "Choose now...",
-						"Wybierz towar", JOptionPane.QUESTION_MESSAGE, null, 
+				String towar = (String) JOptionPane.showInputDialog(null, "Wybierz towar",
+						"Wybór", JOptionPane.QUESTION_MESSAGE, null, 
 						tablicaNazwTowarow, // Array of choices
 						tablicaNazwTowarow[0]); // Initial choice
 				
@@ -146,12 +146,12 @@ public class MyFrame extends JFrame  {
 				String[] ratyWartosci = {"tak","nie"};
 				
 				String kanalPlatnosci = (String) JOptionPane.showInputDialog(null, "Wybierz kanał płatności",
-				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
 				        kanalWartosci, // Array of choices
 				        kanalWartosci[0]); // Initial choice
 				
 				String raty = (String) JOptionPane.showInputDialog(null, "Czy sprzedarz była ratalna?",
-				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
 				        ratyWartosci, // Array of choices
 				        ratyWartosci[0]); // Initial choice
 				
@@ -195,10 +195,10 @@ public class MyFrame extends JFrame  {
 				
 				String[] nazwyDzialow = hurtownia.zwrocTabliceNazwDzialow();
 				String nazwaDzialu = (String) JOptionPane.showInputDialog(null, "Wybierz dzial który chcesz usunąć",
-				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
 				        nazwyDzialow , // Array of choices
 				        nazwyDzialow[0]); // Initial choice
-				
+				hurtownia.usunDzial(nazwaDzialu);
 				dzialyTable = new JTable(hurtownia.zwrocTabliceDzialow(),dzialyColumnNames);
 				dzialyPane.setViewportView(dzialyTable);
 			}
@@ -214,10 +214,10 @@ public class MyFrame extends JFrame  {
 				
 				String[] nazwayTowarow = hurtownia.zwrocTabliceNazwTowarow();
 				String nazwaTowaru = (String) JOptionPane.showInputDialog(null, "Wybierz towar który chcesz usunąć",
-				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
 				        nazwayTowarow , // Array of choices
 				        nazwayTowarow[0]); // Initial choice
-				
+				hurtownia.usunTowar(nazwaTowaru);
 				towaryTable = new JTable(hurtownia.zwrocTabliceTowarow(), towaryColumnNames);
 				towaryPane.setViewportView(towaryTable);
 			}
@@ -232,11 +232,11 @@ public class MyFrame extends JFrame  {
 				
 				String[] idZamowien = hurtownia.zwrocTabliceIdZamowien();
 				String idZamowienia = (String) JOptionPane.showInputDialog(null, "Wybierz zamówienie które chcesz usunąć",
-				        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
+				        "Wybór", JOptionPane.QUESTION_MESSAGE, null,
 				        idZamowien , // Array of choices
 				        idZamowien[0]); // Initial choice
-				Integer.getInteger(idZamowienia);
-				
+				int id = Integer.parseInt(idZamowienia);
+				hurtownia.usunZamowienie(id);
 				zamowieniaTable = new JTable(hurtownia.zwrocTabliceZamowien(),zamowieniaColumnNames);
 				zamowieniaPane.setViewportView(zamowieniaTable);
 			}
